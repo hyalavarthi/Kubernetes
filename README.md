@@ -1,2 +1,2 @@
 # Kubernetes
-Manifesto Files 
+Managing Containerized Applications using Manifest Files
