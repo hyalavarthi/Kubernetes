@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+spec:
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        env: dev
+    spec:
+      containers:
+      - image: nginx
+        name: frontend-image
+  replicas: 3
+  selector:
+    matchLabels:
+      env: dev
+    matchExpressions:
+    - { key: tier, operator: In, values: [frontend, rs]}
+    - { key: dc, operator: NotIn, values: [mum, hyd]}
